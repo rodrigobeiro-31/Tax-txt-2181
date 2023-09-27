@@ -134,16 +134,16 @@ for i in range(0, len(rut)):
 
 RUTComprador = []
 CodigoImpuesto = []
-ImporteIVA1 = []
+ImporteFinalIVA = []
 
 for clave in dic_tb:
   RUTComprador.append(clave)
-  ImporteIVA1.append(dic_tb[clave])
+  ImporteFinalIVA.append(dic_tb[clave])
   CodigoImpuesto.append(504)
 
 for clave in dic_tm:
   RUTComprador.append(clave)
-  ImporteIVA1.append(dic_tb[clave])
+  ImporteFinalIVA.append(dic_tb[clave])
   CodigoImpuesto.append(503)
   
 
@@ -155,7 +155,7 @@ writer = csv.writer(f, delimiter=",")
 writer.writerow(["RUTComprador", "CodigoImpuesto", "ImporteIVA"])
 
 for ww in range(0, len(RUTComprador)):
-  row = [RUTComprador[ww], CodigoImpuesto[ww], ImporteIVA1[ww]]
+  row = [RUTComprador[ww], CodigoImpuesto[ww], ImporteFinalIVA[ww]]
   writer.writerow(row)
 
 f.close()
