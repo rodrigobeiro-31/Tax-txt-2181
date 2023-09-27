@@ -22,6 +22,12 @@ Este script en Python procesa un archivo CSV que contiene datos de transacciones
 
 3. **Salida**: Después de procesar la información correspondiente al mes y año especificados, el script generará un archivo CSV de salida. Este archivo contendrá la información consolidada según los parámetros proporcionados.
 
+## Dependencias
+
+Asegúrate de tener instaladas las siguientes dependencias antes de ejecutar el script:
+
+- suds: Se utiliza para consumir servicios web SOAP en Python.
+
 ## Notas Adicionales
 
 - Asegúrate de tener el archivo CSV adecuado antes de ejecutar el script.
