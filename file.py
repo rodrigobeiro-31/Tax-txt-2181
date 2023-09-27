@@ -12,20 +12,20 @@ importe = []
 tasa_iva = []
 comprobante = []
 formadepago = []
-resulta1 = []
+fechaAjustada = []
 importeIVA = []
 
 for fila in csv_reader:
   if cont != 0:
-    fecha2 = fila[0]
-    fecha3 = fecha2.split("/")
-    result = [fecha3[2], fecha3[0], fecha3[1]]
-    result1 = [fecha3[2], fecha3[0]]
-    result2 = "-".join(result1)
-    fecha3 = "-".join(result)
+    ajustandoFecha2 = fila[0]
+    ajustandoFecha3 = ajustandoFecha2.split("/")
+    ordenFecha = [ajustandoFecha3[2], ajustandoFecha3[0], ajustandoFecha3[1]]
+    ordenFecha2 = [ajustandoFecha3[2], ajustandoFecha3[0]]
+    ordenFechaAjustada = "-".join(ordenFecha2)
+    ajustandoFecha3 = "-".join(ordenFecha)
 
-    resulta1.append(result2)
-    fecha.append(fecha3)
+    fechaAjustada.append(ordenFechaAjustada)
+    fecha.append(ajustandoFecha3)
     rut.append(fila[1])
     comprobante.append(fila[5])
     formadepago.append(fila[4])
@@ -44,9 +44,9 @@ for i in range(1, len(moneda)):
 
 
     if moneda[i] == "USD":
-      valorr1 = m["USD"]
-      valorr2 = importe[i]
-      importe[i] = valorr1 * valorr2
+      valor1 = m["USD"]
+      valor2 = importe[i]
+      importe[i] = valor1 * valor2
       moneda[i] = "UYU"
 
     if moneda[i] == "EUR":
@@ -55,39 +55,39 @@ for i in range(1, len(moneda)):
       importe[i] = valor1 * valor2
       moneda[i] = "UYU"
 
-for a in range(0, len(tasa_iva)):
-  if tasa_iva[a] == "TM":
-    tasa1 = 0.10
-    tasa2 = importe[a]
-    tasa3 = tasa2 * tasa1
-    importeIVA[a] = tasa3
+for i in range(0, len(tasa_iva)):
+  if tasa_iva[i] == "TM":
+    tasa = 0.10
+    importeTotal = importe[i]
+    iva = importeTotal * tasa
+    importeIVA[i] = iva
 
-  elif tasa_iva[a] == "TB":
-    tasa4 = 0.22
-    tasa5 = importe[a]
-    tasa6 = tasa5 * tasa4
-    importeIVA[a] = tasa6
+  elif tasa_iva[i] == "TB":
+    tasa = 0.22
+    importaTotal = importe[i]
+    iva = importaTotal * tasa
+    importeIVA[i] = iva
 
   else:
-    importeIVA[a] = 0
+    importeIVA[i] = 0
 
-for am in range(len(formadepago)):
-  if formadepago[am] == "nota_credito":
-    importeIVA[am] = importeIVA[am] * -1
+for i in range(len(formadepago)):
+  if formadepago[i] == "nota_credito":
+    importeIVA[i] = importeIVA[i] * -1
 
 RUTcomprador = []
 codigoimpuesto = []
 
-for ii in range(0, len(rut)):
-  if len(rut[ii]) > 8:
-    if tasa_iva[ii] == "TM":
+for i in range(0, len(rut)):
+  if len(rut[i]) > 8:
+    if tasa_iva[i] == "TM":
       codigoimpuesto.append(503)
-      RUTcomprador.append(rut[ii])
+      RUTcomprador.append(rut[i])
       
 
-    elif tasa_iva[ii] == "TB":
+    elif tasa_iva[i] == "TB":
       codigoimpuesto.append(504)
-      RUTcomprador.append(rut[ii])
+      RUTcomprador.append(rut[i])
 
     else:
       codigoimpuesto.append("error")
@@ -95,7 +95,7 @@ for ii in range(0, len(rut)):
 
 dic_tm = {}
 dic_tb = {}
-contator = 0
+counter = 0
 
 añonuevo = input("Ingrese un año: ")
 mesnuevo = input("Ingrese un mes: ")
@@ -103,34 +103,34 @@ fechayaño = [añonuevo, mesnuevo]
 fechanueva = "-".join(fechayaño)
 print("Se buscaran las transacciones para la fecha: ", fechanueva)
 
-for aa in range(0, len(rut)):
-  if fechanueva == resulta1[aa]:
-    if rut.count(rut[aa]) > 1:
-      if "TB" in tasa_iva[aa]:
+for i in range(0, len(rut)):
+  if fechanueva == fechaAjustada[i]:
+    if rut.count(rut[i]) > 1:
+      if "TB" in tasa_iva[i]:
 
-        if rut[aa] not in dic_tb:
-          dic_tb[rut[aa]] = contator + importeIVA[aa]
-
-        else:
-          xa = dic_tb[rut[aa]]
-          dic_tb[rut[aa]] = importeIVA[aa] + xa
-
-      elif "TM" in tasa_iva[aa]:
-
-        if rut[aa] not in dic_tm:
-          dic_tm[rut[aa]] = contator + importeIVA[aa]
+        if rut[i] not in dic_tb:
+          dic_tb[rut[i]] = counter + importeIVA[i]
 
         else:
-          xa = dic_tm[rut[aa]]
-          dic_tm[rut[aa]] = importeIVA[aa] + xa
+          xa = dic_tb[rut[i]]
+          dic_tb[rut[i]] = importeIVA[i] + xa
+
+      elif "TM" in tasa_iva[i]:
+
+        if rut[i] not in dic_tm:
+          dic_tm[rut[i]] = counter + importeIVA[i]
+
+        else:
+          xa = dic_tm[rut[i]]
+          dic_tm[rut[i]] = importeIVA[i] + xa
 
     else:
 
-      if "TB" in tasa_iva[aa]:
-        dic_tb[rut[aa]] = importeIVA[aa]
+      if "TB" in tasa_iva[i]:
+        dic_tb[rut[i]] = importeIVA[i]
 
-      elif "TM" in tasa_iva[aa]:
-        dic_tm[rut[aa]] = importeIVA[aa]
+      elif "TM" in tasa_iva[i]:
+        dic_tm[rut[i]] = importeIVA[i]
 
 RUTComprador = []
 CodigoImpuesto = []
