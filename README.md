@@ -18,7 +18,7 @@ Este script en Python procesa un archivo CSV que contiene datos de transacciones
 
 ## Uso
 
-1. **Ejecución**: Para buscar transacciones correspondientes a un mes y año específicos, ejecuta el script proporcionando el año y el mes como argumentos. Asegúrate de seleccionar los meses disponibles en el archivo CSV para probar el funcionamiento adecuado.
+1. **Ejecución**: Para buscar transacciones correspondientes a un mes y año específicos, ejecuta el script proporcionando el año y el mes como argumentos. Asegúrate de seleccionar los meses disponibles en el archivo CSV "Desafio programación para FCE" para probar el funcionamiento adecuado.
 
 2. **Entrada**: El script requiere un archivo CSV con un formato específico. Utiliza este archivo como entrada, ya que la información contenida en él será la base para realizar los cálculos necesarios
 
