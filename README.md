@@ -1,5 +1,3 @@
-# Tax-txt-2181
-
 # Desafío Programación para FCE
 
 Este script en Python procesa un archivo CSV que contiene datos de transacciones financieras y genera un nuevo archivo CSV que resume la información por comprador y tipo de impuesto. El proceso implica calcular el importe del IVA, realizar conversiones de moneda y consolidar la información.
@@ -18,7 +16,7 @@ Este script en Python procesa un archivo CSV que contiene datos de transacciones
 
 ## Uso
 
-1. **Ejecución**: Para buscar transacciones correspondientes a un mes y año específicos, ejecuta el script proporcionando el año y el mes como argumentos. Asegúrate de seleccionar los meses disponibles en el archivo CSV "Desafio programación para FCE" para probar el funcionamiento adecuado.
+1. **Ejecución**: Para buscar transacciones correspondientes a un mes y año específicos, ejecuta el script proporcionando el año y el mes como argumentos. Asegúrate de seleccionar los meses disponibles en el archivo CSV "Desafio programación para FCE" para probar el funcionamiento adecuado (2022-10/2022-9).
 
 2. **Entrada**: El script requiere un archivo CSV con un formato específico. Utiliza este archivo como entrada, ya que la información contenida en él será la base para realizar los cálculos necesarios
 

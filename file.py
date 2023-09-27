@@ -1,6 +1,6 @@
 import csv
 
-f = open('Desafio programación para FCE - Hoja 1 (1).csv', 'r')
+f = open('Desafio programación para FCE .csv', 'r')
 
 csv_reader = csv.reader(f, delimiter=',')
 
@@ -149,7 +149,7 @@ for clave in dic_tm:
 
 import csv
 
-f = open('obligatorio.csv', 'w')
+f = open('txt2181.csv', 'w')
 
 writer = csv.writer(f, delimiter=",")
 writer.writerow(["RUTComprador", "CodigoImpuesto", "ImporteIVA"])
